@@ -15,8 +15,18 @@
 
 var bombNumber = [];
 
+// for (var i = 0; i < 16; i++) {
+//     var bomb = getRandomNumber(1,100);
+
+//     if (bombNumber.includes(bomb)) {
+//         bombNumber.push(i);
+//     } else {
+//         i = i - 1;
+//     }
+// }
+
 while (bombNumber.length < 16 ) {
-    var bomb = getRandomNumber(1,100);
+    var bomb = getRandomNumber(1,100)
 
     if (!bombNumber.includes(bomb)) {
         bombNumber.push(bomb)
@@ -32,19 +42,19 @@ console.log(bombNumber);
 var numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 100'));
 console.log(numeroUtente);
 
+var selectNum = [];
 
-if (!bombNumber.includes(numeroUtente)) {
+
+if ((!bombNumber.includes(numeroUtente)) && !selectNum.includes(numeroUtente)) {
     console.log('Puoi Continuare');
-    
+    selectNum.push(numeroUtente);
 } else {
     console.log('non puoi continuare');
     
-    
 }
 
-// while (numeroUtente != bombNumber) {
-//     numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 100'));
-// }
+console.log(selectNum);
+
 
 
 

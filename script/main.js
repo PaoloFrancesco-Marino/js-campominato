@@ -14,6 +14,13 @@
 // 1.3 - sempre all'interno del ciclo for faccio un push di questi numeri che mi popolano l'array (vuoto) che saranno le mie bombe (quindi i numeri vietati)
 
 var bombNumber = [];
+var selectNum = [];
+var tentativiMax = 84;
+var score = 0;
+
+
+var alert = alert('Benvenuto in Campo Minato \nIstruzioni: \nInserire un numero compreso tra 0 e 100 \nNon puoi inserire un numero gia inserito \nBuona Fortuna')
+
 
 // for (var i = 0; i < 16; i++) {
 //     var bomb = getRandomNumber(1,100);
@@ -42,18 +49,22 @@ console.log(bombNumber);
 var numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 100'));
 console.log(numeroUtente);
 
-var selectNum = [];
-
-
-if ((!bombNumber.includes(numeroUtente)) && !selectNum.includes(numeroUtente)) {
-    console.log('Puoi Continuare');
-    selectNum.push(numeroUtente);
-} else {
-    console.log('non puoi continuare');
-    
+for (var i= 0; i < tentativiMax; i++) {
+    if ((!bombNumber.includes(numeroUtente)) && !selectNum.includes(numeroUtente)) {
+        selectNum.push(numeroUtente);
+        numeroUtente = parseInt(prompt('Inserisci nuvo numero'));
+        score += 1;
+    } else {
+        console.log('Boom! Punteggio Totale: ' + score); 
+        
+    }
 }
 
-console.log(selectNum);
+
+
+
+console.log(score);
+
 
 
 

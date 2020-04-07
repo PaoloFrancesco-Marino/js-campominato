@@ -93,7 +93,7 @@ for (var i = 0; i < tentativiMax && !loose; i++) {
     // verifico che il numero utente sia nelle bombe
     if (bombNumber.includes(numeroUtente)) {
         loose = true;
-    // verifico se il numero utente è stato fortino in precedenza
+    // verifico se il numero utente è stato fornito in precedenza
     } else if (selectNum.includes(numeroUtente)) {
         numeroUtente = parseInt(prompt('Hai gia Inserito questo numero, Riprova'));
         i--;

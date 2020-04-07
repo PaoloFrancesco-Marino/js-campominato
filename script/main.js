@@ -21,16 +21,7 @@ var score = 0;
 
 alert('Benvenuto in Campo Minato \nIstruzioni: \nInserire un numero compreso tra 0 e 100 \nNon puoi inserire un numero gia inserito \n')
 
-
-// for (var i = 0; i < 16; i++) {
-//     var bomb = getRandomNumber(1,100);
-
-//     if (bombNumber.includes(bomb)) {
-//         bombNumber.push(i);
-//     } else {
-//         i = i - 1;
-//     }
-// }
+// generazione numeri random casuali non ripetuti chiamando la funzione max e min
 
 while (bombNumber.length < 16 ) {
     var bomb = getRandomNumber(1,100)
@@ -47,36 +38,29 @@ console.log(bombNumber);
 // 2.3- Se supero le condizioni continuo a chiedere un numero all'utente altrimenti la mia partita termina
 
 var numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 100'));
-console.log(numeroUtente);
 
 for (var i= 0; i < tentativiMax; i++) {
-    if ((!bombNumber.includes(numeroUtente)) && !selectNum.includes(numeroUtente)) {
+    if (selectNum.includes(numeroUtente)) {
+        numeroUtente = parseInt(prompt('Hai gia Inserito questo numero, Riprova'));
+        i--;
+
+    } else if ((!bombNumber.includes(numeroUtente)) && !selectNum.includes(numeroUtente)) {
         selectNum.push(numeroUtente);
         numeroUtente = parseInt(prompt('Inserisci nuvo numero'));
         score += 1;
+    
     } else {
         console.log('Boom! Punteggio Totale: ' + score); 
         alert('Boom! Punteggio Totale: ' + score);
-        break; 
+        break;
     }
 }
 
+console.log(i);
 
 
 
 console.log(score);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /***********

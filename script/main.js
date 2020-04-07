@@ -19,7 +19,7 @@ var tentativiMax = 84;
 var score = 0;
 
 
-var alert = alert('Benvenuto in Campo Minato \nIstruzioni: \nInserire un numero compreso tra 0 e 100 \nNon puoi inserire un numero gia inserito \nBuona Fortuna')
+alert('Benvenuto in Campo Minato \nIstruzioni: \nInserire un numero compreso tra 0 e 100 \nNon puoi inserire un numero gia inserito \n')
 
 
 // for (var i = 0; i < 16; i++) {
@@ -56,7 +56,8 @@ for (var i= 0; i < tentativiMax; i++) {
         score += 1;
     } else {
         console.log('Boom! Punteggio Totale: ' + score); 
-        
+        alert('Boom! Punteggio Totale: ' + score);
+        break; 
     }
 }
 

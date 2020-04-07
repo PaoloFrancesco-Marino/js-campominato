@@ -15,8 +15,10 @@
 
 var bombNumber = [];
 var selectNum = [];
-var tentativiMax = 1;
+var tentativiMax = 0;
 var score = 0;
+
+var numeroUtente;
 
 
 alert('Benvenuto in Campo Minato \nIstruzioni: \nScegli una delle difficoltà disponibili \nInserire un numero compreso tra 0 e 100 \nRicordati che non puoi inserire un numero gia inserito \n')
@@ -34,25 +36,52 @@ var ultra = 'ultra';
 
 if (level == normale) {
     tentativiMax = 84;
+    numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 100')).trim();
+    while (bombNumber.length < 16 ) {
+        var bomb = getRandomNumber(1,100)
+    
+        if (!bombNumber.includes(bomb)) {
+            bombNumber.push(bomb)
+        }
+    }
 } else if (level == media) {
     tentativiMax = 64;
+    numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 80')).trim();
+    while (bombNumber.length < 16 ) {
+        var bomb = getRandomNumber(1,80)
+    
+        if (!bombNumber.includes(bomb)) {
+            bombNumber.push(bomb)
+        }
+    }
 } else if (level == difficile) {
     tentativiMax = 34;
+    numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 50')).trim();
+    while (bombNumber.length < 16 ) {
+        var bomb = getRandomNumber(1,50)
+    
+        if (!bombNumber.includes(bomb)) {
+            bombNumber.push(bomb)
+        }
+    }
 } else {
-    tentativiMax = 2;
+    tentativiMax = 4;
+    numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 20'));
+    while (bombNumber.length < 16 ) {
+        var bomb = getRandomNumber(1,20)
+    
+        if (!bombNumber.includes(bomb)) {
+            bombNumber.push(bomb)
+        }
+        
+    }
 }
 
 
 
 // generazione numeri random casuali non ripetuti chiamando la funzione max e min
 
-while (bombNumber.length < 16 ) {
-    var bomb = getRandomNumber(1,100)
 
-    if (!bombNumber.includes(bomb)) {
-        bombNumber.push(bomb)
-    }
-}
 
 console.log(bombNumber);
 
@@ -60,22 +89,27 @@ console.log(bombNumber);
 // 2.2- verifico le condizioni cioè che il numero inserito non sia uguale ad un numero delle bombe e che l'utente non metta lo stesso numero più volte (ciclo while)
 // 2.3- Se supero le condizioni continuo a chiedere un numero all'utente altrimenti la mia partita termina
 
-var numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 100'));
 
-for (var i= 0; i <= tentativiMax; i++) {
-    if (selectNum.includes(numeroUtente)) {
+
+for (var i= 0; i < tentativiMax - 1; i++) {
+    if (bombNumber.includes(numeroUtente)) {
+        console.log('Boom! Punteggio Totale: ' + score); 
+        alert('Boom! Punteggio Totale: ' + score);
+        break;
+
+    } else if (selectNum.includes(numeroUtente)) {
         numeroUtente = parseInt(prompt('Hai gia Inserito questo numero, Riprova'));
         i--;
 
     } else if ((!bombNumber.includes(numeroUtente)) && !selectNum.includes(numeroUtente)) {
         selectNum.push(numeroUtente);
-        numeroUtente = parseInt(prompt('Inserisci nuvo numero'));
+        numeroUtente = parseInt(prompt('Inserisci nuovo numero'));
         score += 1;
     
     } else {
-        console.log('Boom! Punteggio Totale: ' + score); 
-        alert('Boom! Punteggio Totale: ' + score);
-        break;
+        alert('hai vinto');
+        console.log('hai vinto');
+        
     }
 }
 

@@ -15,11 +15,34 @@
 
 var bombNumber = [];
 var selectNum = [];
-var tentativiMax = 84;
+var tentativiMax = 1;
 var score = 0;
 
 
-alert('Benvenuto in Campo Minato \nIstruzioni: \nInserire un numero compreso tra 0 e 100 \nNon puoi inserire un numero gia inserito \n')
+alert('Benvenuto in Campo Minato \nIstruzioni: \nScegli una delle difficoltà disponibili \nInserire un numero compreso tra 0 e 100 \nRicordati che non puoi inserire un numero gia inserito \n')
+
+
+
+// aggiungi difficoltà
+
+var level = prompt('Scegli il livello di difficoltà: \nNormale \nMedia \nDifficile \nUltra').toLocaleLowerCase();
+
+var normale = 'normale';
+var media = 'media';
+var difficile = 'difficile';
+var ultra = 'ultra';
+
+if (level == normale) {
+    tentativiMax = 84;
+} else if (level == media) {
+    tentativiMax = 64;
+} else if (level == difficile) {
+    tentativiMax = 34;
+} else {
+    tentativiMax = 2;
+}
+
+
 
 // generazione numeri random casuali non ripetuti chiamando la funzione max e min
 
@@ -39,7 +62,7 @@ console.log(bombNumber);
 
 var numeroUtente = parseInt(prompt('Inserisci un numero compreso tra 1 e 100'));
 
-for (var i= 0; i < tentativiMax; i++) {
+for (var i= 0; i <= tentativiMax; i++) {
     if (selectNum.includes(numeroUtente)) {
         numeroUtente = parseInt(prompt('Hai gia Inserito questo numero, Riprova'));
         i--;
@@ -55,10 +78,6 @@ for (var i= 0; i < tentativiMax; i++) {
         break;
     }
 }
-
-console.log(i);
-
-
 
 console.log(score);
 
